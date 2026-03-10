@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+</head>
+
+<body>
+
+<h2>Form Example</h2>
+
+<form id="form">
+
+<input type="text" id="name" placeholder="Enter name" required>
+
+<input type="password" 
+       id="password" 
+       placeholder="Enter password"
+       minlength="8"
+       maxlength="10"
+       required>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<p id="msg"></p>
+
+<script>
+
+const form = document.querySelector("#form")
+const nameInput = document.querySelector("#name")
+const passwordInput = document.querySelector("#password")
+const msg = document.querySelector("#msg")
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault()
+
+const name = nameInput.value
+const password = passwordInput.value
+
+// check capital letter
+const capitalPattern = /[A-Z]/
+
+if(!capitalPattern.test(password)){
+    msg.innerText = "Password must contain at least one capital letter"
+    return
+}
+
+msg.innerText = "Form Submitted Successfully"
+
+console.log("Name:", name)
+console.log("Password:", password)
+
+})
+
+</script>
+
+</body>
+</html>
